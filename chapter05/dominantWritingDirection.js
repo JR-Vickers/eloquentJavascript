@@ -11,8 +11,11 @@ chapter are probably useful here.
 */
 
 
-/*  Note that this code won't work outside of the Eloquent
-    JavaScript sandbox, since it relies on certain dependencies */
+/*
+Note that this code won't work outside of the Eloquent
+JavaScript sandbox, since it relies on certain dependencies 
+*/
+
 function dominantDirection(text) {
     let counted = countBy(text, char => {
       let script = characterScript(char.codePointAt(0));
