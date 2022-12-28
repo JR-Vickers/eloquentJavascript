@@ -10,11 +10,20 @@ characterScript and countBy functions defined earlier in the
 chapter are probably useful here.
 */
 
+
+/*  Note that this code won't work outside of the Eloquent
+    JavaScript sandbox, since it relies on certain dependencies */
 function dominantDirection(text) {
-    // Your code here.
-    console.log()
-}
+    let counted = countBy(text, char => {
+      let script = characterScript(char.codePointAt(0));
+      return script ? script.direction : "none";
+    }).filter(({name}) => name != "none");
   
+    if (counted.length == 0) return "ltr";
+  
+    return counted.reduce((a, b) => a.count > b.count ? a : b).name;
+}
+
 console.log(dominantDirection("Hello!"));
 // → ltr
 console.log(dominantDirection("Hey, مساء الخير"));
